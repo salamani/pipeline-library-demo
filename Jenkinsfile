@@ -5,9 +5,13 @@ import com.cleverbuilder.SampleClass
 
 pipeline {
     agent any
-
-    parameters([string(name:'CURRENCY_VERSION',defaultValue:NULL,description:'Currency version'),string(name:'NODES',defaultValue:NULL,description:'Nodes'), string(name:'PUBLISHED_VERSION',defaultValue:NULL,description:'Published version',readOnly:true) ])
-    
+    properties([
+              parameters([string(name:'CURRENCY_VERSION',defaultValue:'test',description:'Currency version'),
+              string(name:'PUBLISHED_VERSION',defaultValue:'test',description:'Published version',readOnly:true)]),
+              buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '20', numToKeepStr: '30')),
+              durabilityHint('PERFORMANCE_OPTIMIZED'),
+              [$class: 'JobPropertyImpl', throttle: [count: 24, durationName: 'hour', userBoost: true]]
+     ])
     stages {
         stage('Demo') {
             steps {
