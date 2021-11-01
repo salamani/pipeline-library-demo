@@ -10,12 +10,11 @@ pipeline {
             steps {
                 echo 'Hello, world'
                 sayHello 'Dave'
-                
-                println ('## OS ' + System.properties['os.name'])
-                
+                               
                 echo 'The value of foo is : ' + GlobalVars.foo
 
                 script {
+                    println ('## OS ' + System.properties['os.name'])
                     def person = new SampleClass()
                     person.age = 21
                     person.increaseAge(10)
