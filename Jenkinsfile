@@ -6,11 +6,11 @@ import com.cleverbuilder.SampleClass
 pipeline {
     agent any
     properties([
-                 parameters([string(name:'CURRENCY_VERSION',defaultValue:config.packageVersion,description:'Currency version'),
-                             string(name:'NODES',defaultValue:(config.nodeName).join(", "),description:'Nodes'),
-                             string(name:'PRIVATE_RUN_REASON',defaultValue:config.privateRunReason,description:'Private run reason'),
-                             string(name:'PUBLISHED_VERSION',defaultValue:config.packageVersion,description:'Published version',readOnly:true) ])
-                ])
+                 parameters([string(name:'CURRENCY_VERSION',defaultValue:NULL,description:'Currency version'),
+                             string(name:'NODES',defaultValue:NULL,description:'Nodes'),
+                             string(name:'PRIVATE_RUN_REASON',defaultValue:NULL,description:'Private run reason'),
+                             string(name:'PUBLISHED_VERSION',defaultValue:NULL,description:'Published version',readOnly:true) ])
+    ])
     stages {
         stage('Demo') {
             steps {
