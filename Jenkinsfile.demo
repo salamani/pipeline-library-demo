@@ -4,21 +4,19 @@ import com.cleverbuilder.GlobalVars
 import com.cleverbuilder.SampleClass
 
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000 -p 5000:5000' 
+        }
+    }
+    environment {
+        CI = 'true'
+    }
     stages {
-        stage('Demo') {
+        stage('Build') {
             steps {
-                echo 'Hello, world'
-                sayHello 'Dave'
-
-                echo 'The value of foo is : ' + GlobalVars.foo
-
-                script {
-                    def person = new SampleClass()
-                    person.age = 21
-                    person.increaseAge(10)
-                    echo 'Incremented age, is now : ' + person.age
-                }
+                sh 'npm install'
             }
         }
     }
