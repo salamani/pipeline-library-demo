@@ -6,18 +6,13 @@ import com.cleverbuilder.SampleClass
 pipeline {
     agent any 
     stages {
-        stage('Demo') {
-            properties([
-              parameters([string(name:'CURRENCY_VERSION',defaultValue:'test',description:'Currency version'),
-              string(name:'PUBLISHED_VERSION',defaultValue:'test',description:'Published version',readOnly:true)]),
-              buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '20', numToKeepStr: '30')),
-              durabilityHint('PERFORMANCE_OPTIMIZED'),
-              [$class: 'JobPropertyImpl', throttle: [count: 24, durationName: 'hour', userBoost: true]]
-            ])      
+        stage('Demo') {   
             steps {
                 echo 'Hello, world'
                 sayHello 'Dave'
-
+                
+                println ('## OS ' + System.properties['os.name'])
+                
                 echo 'The value of foo is : ' + GlobalVars.foo
 
                 script {
