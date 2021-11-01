@@ -4,7 +4,7 @@ import com.cleverbuilder.GlobalVars
 import com.cleverbuilder.SampleClass
 
 pipeline {
-    agent any
+    agent any {
     properties([
               parameters([string(name:'CURRENCY_VERSION',defaultValue:'test',description:'Currency version'),
               string(name:'PUBLISHED_VERSION',defaultValue:'test',description:'Published version',readOnly:true)]),
@@ -12,6 +12,7 @@ pipeline {
               durabilityHint('PERFORMANCE_OPTIMIZED'),
               [$class: 'JobPropertyImpl', throttle: [count: 24, durationName: 'hour', userBoost: true]]
      ])
+    }
     stages {
         stage('Demo') {
             steps {
