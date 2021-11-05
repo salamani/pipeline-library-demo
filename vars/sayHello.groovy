@@ -15,6 +15,6 @@ def call(String name = 'human') {
                         pipelineTriggers([cron(cronVal)]),
                         [$class: 'JobPropertyImpl', throttle: [count: 24, durationName: 'hour', userBoost: true]]
                 ])
- echo scm.getUserRemoteConfigs()[0].getUrl()
+ echo "salamani repo -------------> " + scm.getUserRemoteConfigs()[0].getUrl()
 }
 
