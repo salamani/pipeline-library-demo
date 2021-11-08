@@ -5,7 +5,7 @@ def call(String name = 'human') {
   sh '''
         echo "Hello World"
         echo ${GIT_URL}
-        echo ${PRIVATE_RUN_REASON1}
+        echo "Private Run Reason" ${PRIVATE_RUN_REASON1}
   '''
  //  String cronVal = 'H H * * *'
  //  
