@@ -7,6 +7,8 @@ def call(String name = 'human') {
         echo ${GIT_URL}
         echo "Private Run Reason" ${PRIVATE_RUN_REASON1}
   '''
+  def execBuild = load("install.groovy")
+  execBuild()
  //  String cronVal = 'H H * * *'
  //  
  //  properties([
