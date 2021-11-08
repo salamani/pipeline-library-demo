@@ -2,6 +2,9 @@
 
 def call(String name = 'human') {
   echo "Hello, ${name}."
+  sh '''
+        echo "Hello World"
+  '''
  //  String cronVal = 'H H * * *'
  //  
  //  properties([
