@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 def call(String name = 'human') {
+  stage("install stage"){
   echo "Hello, ${name}."
   sh '''
         echo "Hello World"
@@ -9,6 +10,7 @@ def call(String name = 'human') {
   '''
   
   install()
+  }
  //  String cronVal = 'H H * * *'
  //  
  //  properties([
