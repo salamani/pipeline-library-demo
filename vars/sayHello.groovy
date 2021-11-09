@@ -2,14 +2,16 @@
 
 def call(String name = 'human') {
   stage("install stage"){
-  echo "Hello, ${name}."
-  sh '''
-        echo "Hello World"
-        echo ${GIT_URL}
-        echo "Private Run Reason" ${PRIVATE_RUN_REASON1}
-  '''
+    script{
+     echo "Hello, ${name}."
+     sh '''
+         echo "Hello World"
+         echo ${GIT_URL}
+         echo "Private Run Reason" ${PRIVATE_RUN_REASON1}
+     '''
   
-  install()
+     install()
+  }
   }
  //  String cronVal = 'H H * * *'
  //  
